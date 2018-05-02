@@ -1,1 +1,30 @@
 http://manager.enterdev.co/upload/agility.zip
+
+function fireKey(key)
+{
+ var elelement = contentAreaFrame.isolatedWorkArea.ITSFRAME1.contentDocument.getElementById('M0:D:10::okcd');
+    if(document.createEventObject)
+    {
+        var eventObj = document.createEventObject();
+        eventObj.keyCode = key;
+        elelement.fireEvent("onkeydown", eventObj);
+        eventObj.keyCode = key;   
+    }else if(document.createEvent)
+    {
+        var eventObj = document.createEvent("Events");
+        eventObj.initEvent("keydown", true, true);
+        eventObj.which = key; 
+        eventObj.keyCode = key;
+        elelement.dispatchEvent(eventObj);
+    }
+}
+
+return fireKey(13);
+/* el parametro de la funcion fireKey es el keycode 13=Enter
+   la variable element es el elemento html al que se le quiere aplicar el envento de teclado.
+ */
+
+
+/*esta pagina te muestra el codigo para cada tecla*/
+
+http://keycode.info/
